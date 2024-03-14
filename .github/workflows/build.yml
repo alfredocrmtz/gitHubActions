@@ -1,11 +1,20 @@
+name: NODE CONTINIOUS INTEGRATION
 on: push
 jobs:
-    first-job:
+    build-node:
+    #first-job:
+        name: Buil an run a Node Aplication
         runs-on: ubuntu-latest
         container: node:16
         steps:
             - run: node --version
+              name:  Check Node version
             - run: npm --version
+              name: Check NPM Version
+            #Utilizada para que el flijo de trabajo acceda al repositorio y verfica el contenido en el entorno de trabajo
             - uses: actions/checkout@v4
+              name: Checkout code from GitHub
             - run: npm install
+              name:  Install Dependencies
             - run: node app.js
+              name: Run the Node Application
